@@ -18,6 +18,7 @@ public class Hydrogen extends Thread {
 	    try {
 	    	 // you will need to fix below
 			
+
 	    	System.out.println("---Group ready for bonding---");			 
 	    	sharedMethane.bond("H"+ this.id);
 	    }
