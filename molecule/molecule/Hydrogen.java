@@ -27,16 +27,17 @@ public class Hydrogen extends Thread {
 				sharedMethane.removeHydrogen(4);
 				sharedMethane.carbonQ.release();
 				sharedMethane.removeCarbon(1);
+				System.out.println("---Group ready for bonding---");
 			}
 			else
 			{
 				sharedMethane.mutex.release();
 			}
 			sharedMethane.hydrogensQ.acquire();
-	    	System.out.println("---Group ready for bonding---");			 
+
 	    	sharedMethane.bond("H"+ this.id);
 
-	    	sharedMethane.barrier.b_wait();
+			sharedMethane.barrier.b_wait();
 	    }
 	   catch (InterruptedException ex) { /* not handling this  */}
 	    //System.out.println(" ");

@@ -25,6 +25,7 @@ public class Carbon extends Thread {
 				sharedMethane.removeCarbon(2);
 				sharedMethane.carbonQ.release();
 				sharedMethane.removeCarbon(1);
+				System.out.println("---Group ready for bonding---");
 			}
 			else
 			{
@@ -33,7 +34,7 @@ public class Carbon extends Thread {
 
 			sharedMethane.carbonQ.acquire();
 
-	    	System.out.println("---Group ready for bonding---");	
+
 	    	sharedMethane.bond("C"+ this.id);  //bond
 	    	 
 			sharedMethane.barrier.b_wait();
