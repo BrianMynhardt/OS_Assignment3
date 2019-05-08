@@ -17,10 +17,26 @@ public class Hydrogen extends Thread {
 	public void run() {
 	    try {
 	    	 // you will need to fix below
-			
+			sharedMethane.mutex.acquire();
 
+			sharedMethane.addHydrogen();
+
+			if(sharedMethane.getHydrogen()>=4 && sharedMethane.getCarbon() >= 1)
+			{
+				sharedMethane.hydrogensQ.release(4);
+				sharedMethane.removeHydrogen(4);
+				sharedMethane.carbonQ.release();
+				sharedMethane.removeCarbon(1);
+			}
+			else
+			{
+				sharedMethane.mutex.release();
+			}
+			sharedMethane.hydrogensQ.acquire();
 	    	System.out.println("---Group ready for bonding---");			 
 	    	sharedMethane.bond("H"+ this.id);
+
+	    	sharedMethane.barrier.b_wait();
 	    }
 	   catch (InterruptedException ex) { /* not handling this  */}
 	    //System.out.println(" ");
