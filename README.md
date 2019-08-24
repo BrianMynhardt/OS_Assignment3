@@ -1,4 +1,5 @@
-# OS_Assignment3
+# OS_Assignment3 Simple Reusable Barrier
+
 Compile Using Default "make"
 Run using small amount of threads: "make runSmall"
 Run using medium amount of threads: "make runMedium"
